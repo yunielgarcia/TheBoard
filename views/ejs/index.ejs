@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%- title %>
+    </title>
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+    <h1><%- title %></h1>
+    <% if(error){%>
+        <p>Error ocurred:
+            <%- error %>
+        </p>
+        <%}%>
+            <% categories.forEach(function(category){%>
+                <div>
+                    <span><%=  category.notes ? category.notes.length : 0%></span>
+                    <a href="#">
+                        <%- category.name %>
+                    </a>
+                </div>
+                <%})%>
+     <script src="/lib/underscore/underscore.js"></script>
+     <script src="/lib/jquery/dist/jquery.min.js"></script>   
+     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>           
+        
+</body>
+
+</html>
