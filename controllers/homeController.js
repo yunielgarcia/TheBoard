@@ -9,6 +9,12 @@
              });
     
         });
+        
+        app.get("/notes/:categoryName", function(req, res){
+            var categoryName = req.params.categoryName;
+            res.render("notes", { title: categoryName});            
+        });
+        
         app.post("/newCategory", function(req, res){
             console.log(req.body)
             var categoryName = req.body.categoryName;
