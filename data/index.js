@@ -9,13 +9,7 @@
         database.getDb(function(err, db) {
             if (err) {
                 next(err, null)
-            } else {
-                // db.notes.find().toArray(function(err, results) {
-                //     if (err) {
-                //         next(err, null);
-                //     } else {
-                //         next(null, results);
-                //     }
+            } else {               
                 db.notes.find().toArray(function(err, results) {
                     if (err) {
                         next(err, null);
@@ -63,6 +57,17 @@
                 })
             }
         });
+    };
+    
+    data.addNote = function(categoryName, noteToInsert, next){
+        database.getDb(function(err, db) {
+            if(err){
+                next(err);
+            }else{
+                db.notes.update({name: categoryName}, { $push:{ notes: noteToInsert}}, next);
+            }
+            
+        })
     };
 
     function seedDatabase() {

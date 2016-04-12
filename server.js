@@ -22,7 +22,7 @@ controllers.init(app);
     app.set("view engine", "vash");
     
     //Opt inte services
-app.use(bodyParser.urlencoded());
+// app.use(bodyParser.urlencoded());
 // parse application/json
 
 
