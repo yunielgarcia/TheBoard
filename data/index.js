@@ -67,7 +67,18 @@
                 db.notes.update({name: categoryName}, { $push:{ notes: noteToInsert}}, next);
             }
             
-        })
+        });
+    };
+    
+    data.addUser = function(user, next){
+       database.getDb(function(err, db) {
+            if(err){
+                next(err);
+            }else{
+                db.users.insert(user, next);
+            }
+            
+        }); 
     };
 
     function seedDatabase() {

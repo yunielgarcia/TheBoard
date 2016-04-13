@@ -10,25 +10,22 @@ var controllers = require("./controllers");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
+
+
+//setup the view-engine
+app.set("view engine", "vash");    
+
+//set the public static resource folder
+app.use(express.static("./public"));
+
+//use authentication
+var auth = require("./auth");
+auth.init(app);
+
 //Map the routes
 controllers.init(app);
 
 
-
-//setup the view-engine
-    // app.set("view engine", "jade");
-    // app.engine("ejs", ejsEngine);
-    // app.set("view engine", "ejs");
-    app.set("view engine", "vash");
-    
-    //Opt inte services
-// app.use(bodyParser.urlencoded());
-// parse application/json
-
-
-
-//set the public static resource folder
-app.use(express.static("./public"));
 
 app.get("/api/users", function(req, res){
     res.send({name: "ygg", isValid: true, group: 'admin'});
