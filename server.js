@@ -18,7 +18,7 @@ app.set("view engine", "vash");
 //set the public static resource folder
 app.use(express.static("./public"));
 
-//use authentication
+//use authentication....(we want to handle auth first of all routes)
 var auth = require("./auth");
 auth.init(app);
 
